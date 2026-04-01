@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Pro Personal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="card" id="vista-principal">
+        <div class="theme-switch-wrapper">
+    <button id="btn-tema" class="btn-theme">🌙</button>
+         </div>
+           <h1>🏆 FitTrack Pro</h1>
+        
+        
+        <form id="form-entrenamiento">
+            <select id="dia-semana">
+                <option value="Lunes">Lunes</option>
+                <option value="Martes">Martes</option>
+                <option value="Miércoles">Miércoles</option>
+                <option value="Jueves">Jueves</option>
+                <option value="Viernes">Viernes</option>
+                <option value="Sábado">Sábado</option>
+                <option value="Domingo">Domingo</option>
+            </select>
+
+            <input type="text" id="actividad" placeholder="¿Qué ejercicio hiciste?" required>
+            <input type="text" id="duracion" placeholder="Duración (ej: 40 min)" required>
+            
+            <select id="categoria">
+                <option value="Cardio">🏃 Cardio</option>
+                <option value="Fuerza">💪 Fuerza</option>
+                <option value="Flexibilidad">🧘 Flexibilidad</option>
+            </select>
+
+            <div id="campos-cardio" class="seccion-dinamica">
+                <input type="number" id="km" placeholder="Kilómetros (km)" step="any">
+                <input type="text" id="ritmo" placeholder="Ritmo (min/km)">
+            </div>
+
+            <div id="campos-fuerza" class="seccion-dinamica" style="display: none;">
+                <input type="number" id="peso" placeholder="Peso usado (kg)">
+                <input type="text" id="series_reps" placeholder="Series x Reps">
+            </div>
+
+            <div class="fila-salud">
+                <input type="number" id="calorias" placeholder="🔥 Calorías">
+                <input type="number" id="pulsaciones" placeholder="💓 BPM Promedio">
+            </div>
+
+            <button type="submit">Guardar en mi Bitácora</button>
+        </form>
+
+        <ul id="lista-ejercicios"></ul>
+
+        <button id="btn-limpiar" class="btn-clear-all">🗑️ Finalizar y Guardar Semana</button>
+        <button id="btn-ver-historial" class="btn-history">📜 Ver Historial de Semanas</button>
+    </div>
+
+    <div id="pagina-historial" class="vista-secundaria" style="display: none;">
+        <div class="header-historial">
+            <button id="btn-volver" class="btn-retroceder">⬅️ Volver</button>
+            <h2>Tu Historial</h2>
+        </div>
+        <div id="lista-historial-semanas" class="contenedor-historial">
+            </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

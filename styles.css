@@ -1,0 +1,188 @@
+/* --- 1. VARIABLES DINÁMICAS (Se ajustan según el tema) --- */
+:root {
+    --primary: #007bff;
+    --success: #28a745;
+    --danger: #dc3545;
+    
+    /* Variables que cambian */
+    --bg-body: linear-gradient(135deg, #E2E1EB 0%, #E2E1EB 100%);
+    --bg-card: #ffffff;
+    --text-main: #222222;
+    --text-secondary: #666666;
+    --border-color: #eeeeee;
+    --item-bg: #ffffff;
+    --dia-bg: #f1f3f5;
+}
+
+[data-theme="dark"] {
+    --bg-body: #050414;
+    --bg-card: #1e1e2e;
+    --text-main: #ffffff;
+    --text-secondary: #cccccc;
+    --border-color: #333344;
+    --item-bg: #2a2a3d;
+    --dia-bg: #161625;
+}
+
+/* --- 2. CONFIGURACIÓN BASE --- */
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
+
+body {
+    background: var(--bg-body);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    color: var(--text-main);
+    transition: background 0.4s ease;
+}
+
+/* --- 3. TARJETAS --- */
+.card, .vista-secundaria {
+    background: var(--bg-card);
+    width: 100%;
+    max-width: 500px;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+    color: var(--text-main);
+    transition: background 0.4s, color 0.4s;
+}
+
+h1, h2 { 
+    text-align: center; 
+    margin-bottom: 25px; 
+    color: var(--text-main);
+}
+
+/* --- 4. FORMULARIO E INPUTS --- */
+form { display: grid; gap: 12px; margin-bottom: 25px; }
+
+input, select {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    background: var(--item-bg);
+    color: var(--text-main);
+    transition: 0.3s;
+}
+
+input:focus { border-color: var(--primary); }
+
+.seccion-dinamica, .fila-salud {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* --- 5. BOTÓN DE TEMA (NUEVO) --- */
+.theme-switch-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -15px;
+}
+
+.btn-theme {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+}
+
+/* --- 6. LISTADO DE EJERCICIOS --- */
+.titulo-dia {
+    background: var(--dia-bg);
+    padding: 8px 15px;
+    margin: 20px 0 10px 0;
+    border-radius: 8px;
+    border-left: 5px solid var(--primary);
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+}
+
+.entrenamiento-item, .tarjeta-historial {
+    background: var(--item-bg) !important;
+    border: 1px solid var(--border-color) !important;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-main);
+}
+
+/* --- 7. BOTONES --- */
+button[type="submit"] {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-delete { background: var(--danger); color: white; border: none; padding: 8px 12px; border-radius: 8px; cursor: pointer; }
+
+.btn-clear-all {
+    width: 100%;
+    margin-top: 15px;
+    background: transparent;
+    color: var(--danger);
+    border: 2px solid var(--danger);
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-history {
+    width: 100%;
+    margin-top: 10px;
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* --- 8. HISTORIAL --- */
+.tarjeta-historial span {
+    display: block;
+    margin-top: 4px;
+    background: rgba(0, 123, 255, 0.1);
+    color: var(--primary);
+    padding: 2px 8px;
+    border-radius: 5px;
+    width: fit-content;
+}
+
+/* Animación de entrada para los nuevos items */
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.entrenamiento-item {
+    animation: slideIn 0.3s ease-out;
+}
+
+/* Efecto visual para el botón cuando está cargando */
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.7;
+    filter: grayscale(0.5);
+}
